@@ -1,5 +1,8 @@
 # serverless-fst
+
 Repository for OpenFST Utilities as AWS Serverless Applications
+
+Made with ❤️ by Kyle Goehner. Available on the [AWS Serverless Application Repository](https://aws.amazon.com/serverless)
 
 ## fstinfo
 
