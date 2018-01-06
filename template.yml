@@ -15,3 +15,23 @@ Resources:
                     Properties:
                         Path: /info
                         Method: post
+                        RestApiId: !Ref FstInfoApi
+    FstInfoApi:
+        Type: AWS::Serverless::Api
+        Properties:
+            StageName: Prod
+            DefinitionBody:
+                swagger: 2.0
+                info:
+                    title: !Ref AWS::StackName
+                x-amazon-apigateway-binary-media-types:
+                    - 'application/octet-stream'
+                paths:
+                    "/info":
+                        post:
+                            x-amazon-apigateway-integration:
+                                httpMethod: POST
+                                type: aws_proxy
+                                uri:
+                                    Fn::Sub: arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${FstFunction.Arn}/invocations
+                            responses: {}

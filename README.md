@@ -6,11 +6,10 @@ Made with ❤️ by Kyle Goehner. Available on the [AWS Serverless Application R
 
 ## fstinfo
 
-Once your application is deployed, you can get the fst info for a binary FST by converting your fst to base64 and posting it to the /info URI.
+Once your application is deployed, you can get the fst info for a binary FST by posting it to the /info URI.
 
 ```bash
-base64 -i binary.fst -o base64.fst
-curl -X POST https://<invoke url>/Prod/info --data-binary @tests/data/base64.fst
+curl -X POST https://<invoke url>/Prod/info -H Content-Type:application/octet-stream --data-binary @test/data/binary.fst
 ```
 
 ## Building executables for Lambda
